@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background: #1e1a20;
+    scroll-behavior: smooth;
+}
+
+body {
+    color: #ffeded;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 300vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.webgl {
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+}
+
+.section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensure space between text and 3D objects */
+    padding: 4rem;
+    position: relative;
+}
+
+/* Content container for each section */
+.section-content {
+    max-width: 800px;
+    width: 100%;
+    padding: 3rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* First section - Far Left aligned */
+.section:nth-child(1) {
+    flex-direction: row-reverse; /* Reverse the order to push text left and 3D object right */
+    padding-left: 5%;
+}
+
+/* Second section - Left aligned */
+.section:nth-child(2) {
+    flex-direction: row; /* Default order to push text left and 3D object right */
+    padding-left: 20%;
+}
+
+/* Third section - Right aligned */
+.section:nth-child(3) {
+    flex-direction: row-reverse; /* Reverse the order to push text right and 3D object left */
+    padding-right: 20%;
+}
+
+.section h1,
+.section h2,
+.section h3 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    max-width: 600px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1.5rem;
+    background: linear-gradient(45deg, #ffeded, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+}
+
+/* Add paragraphs for content */
+.section p {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    line-height: 1.8;
+    margin-top: 1rem;
+    opacity: 0.9;
+    color: #ffeded;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries for responsive design */
+@media screen and (max-width: 768px) {
+    .section {
+        padding: 2rem;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column; /* Stack text and 3D objects vertically on small screens */
+    }
+
+    .section:nth-child(1),
+    .section:nth-child(2),
+    .section:nth-child(3) {
+        padding: 3rem;
+    }
+
+    .section-content {
+        padding: 1.5rem;
+    }
+}
+
+/* Add smooth transitions */
+.section h1,
+.section h2,
+.section h3,
+.section p {
+    transition: transform 0.3s ease;
+}
+
+.section:hover h1,
+.section:hover h2,
+.section:hover h3,
+.section:hover p {
+    transform: scale(1.02);
+}
